@@ -1,0 +1,156 @@
+﻿* Importar una fuente de letra por internet */
+@import "https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap";
+
+/* Tamaño de las cajas sin bordes y relleno que viene por defecto */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Además del html se pone 100% para que se adapte a toda la pantalla */
+html {
+    height: 100%;
+}
+
+
+.body {
+    font-family: "cooper black", sans-serif;
+    font-size: 1.2rem;
+    min-height: 100%;
+}
+
+/* Estilos de los descendientes-elementos de grid container */
+.grid-container > * {
+    box-shadow: 1px 2px 7px 0px ;
+    border-radius: 0px;
+    padding: 5px;
+    text-align: center;
+}
+
+/* Asignar una área a los descendientes de forma ordena, con sus propiedades necesarias, con el nombre asigando con la clase del html */
+.header {
+    grid-area: header;
+    background-image: url(img/estrellas.jpg) ;
+    display: flex;
+    height: 70px;
+    color: brown;
+    justify-content: space-between;
+    align-content: center;
+    padding: 10px;
+    text-decoration: none;
+    font-family: cherry lime;
+    
+    
+}
+.menu{
+  list-style: none;
+  padding:0;
+  width: 75%;
+  max-width: 900px;
+  margin: auto;
+  color: black;
+  
+}
+.menu li a{
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+  display: block;
+}
+.menu li{
+  display: inline-block;
+
+  text-align: center;
+}
+.logo{
+  margin: 0;
+  padding: 25px;
+ 
+
+}
+
+.navbar {
+    grid-area: navbar;
+  font-weight: 600;
+  padding: 10px;
+   color: white;
+   text-decoration: none;
+   background-color: burlywood;
+
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: burlywood;
+    color: white;
+}
+
+.main {
+    grid-area: main;
+    background-color: moccasin;
+    color: chocolate;
+   
+}
+
+.footer {
+    grid-area: footer;
+    background-color:burlywood;
+    color: white;
+}
+
+/* ACTIVAMOS EL GRID con la clase del html que esta en el cuerpo, para que los elementos descendientes sean GRID */
+.grid-container {
+    display: grid;
+    gap: 10px;
+
+    /* Asignar nombres a los descendientes, preferencia por orden */
+    grid-template-areas:
+        "header"
+        "navbar"
+        "main"
+        "sidebar"
+        "footer";
+}
+
+/* Dimensionar tipo los descendientes a tipo tablet, con la query media */
+@media (min-width: 600px) {
+    .grid-container {
+        /* Ajuste de columnas, en este caso 2 */
+        /* grid-template-columns: 200px auto; */
+
+        /* Ajuste de filas, en este caso 4 */
+        /* grid-template-rows: 100px 50px auto 100px; */
+
+        background-color: beige;
+
+      
+        /* Nuevo metodo solo grid- template en vez de grid templates area, donde mis se coloque tamaño adelante de los nombres de descendientes, de arriba hacia abajo empezando por filas y despues columnas */
+        .grid-template:
+            "header header" 100px
+            "navbar navbar" auto
+            "sidebar main" 50px
+            "footer footer" 100px
+            / 200px auto;
+        
+    }
+}
+
+/* Ajustar para desktop laptop, mas de 900px, debe tener 3 columnas */
+@media (min-width: 900px) {
+    .grid-container{
+        background-color: beige;
+
+        grid-template:
+            /* Ajustar para desktop- filas 3 (100px auto 100px) y columnas 200px auto 200px */
+            "header header header" 100px
+            "navbar main sidebar" auto
+            "footer footer footer" 100px
+            / 200px auto 200px;
+    }
+}
+
+  
+
+  
+}
